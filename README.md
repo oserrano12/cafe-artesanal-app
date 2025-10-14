@@ -42,18 +42,11 @@ La aplicación permite visualizar distintos tipos de café, sus características
 
 ---
 
-## 📸 Capturas (opcional)
-
-*(Agrega aquí imágenes del sitio una vez tengas versiones funcionales del proyecto.)*
-
----
-
 ## 👨‍💻 Autor
 
 **Oscar Serrano**  
 Estudiante de Ingeniería en Desarrollo de Sistemas Informáticos  
-Universidad [Nombre de tu universidad]  
-📧 Contacto: [tu correo o enlace a tu perfil de GitHub]  
+Universidad Unidades Tecnológicas de Santander
 
 ---
 
