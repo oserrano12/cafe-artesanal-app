@@ -1,0 +1,257 @@
+/* Paleta de colores personalizada */
+:root {
+    --color-primary: #6B4423;
+    --color-secondary: #A0522D;
+    --color-accent: #D2691E;
+    --color-light: #E5D8C0;
+    --color-dark: #3E2723;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slideDown {
+    animation: slideDown 0.4s ease-out forwards;
+}
+
+.animate-pulse-slow {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Estilos generales del body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-dark);
+}
+
+/* Clases de colores personalizados */
+.bg-primary { 
+    background-color: var(--color-primary);
+}
+
+.bg-secondary { 
+    background-color: var(--color-secondary);
+}
+
+.bg-accent { 
+    background-color: var(--color-accent);
+}
+
+.bg-light { 
+    background-color: var(--color-light);
+}
+
+.text-primary { 
+    color: var(--color-primary);
+}
+
+.border-primary { 
+    border-color: var(--color-primary);
+}
+
+/* Efecto hover lift para tarjetas */
+.hover-lift { 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.hover-lift:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Gradiente overlay para hero section */
+.gradient-overlay {
+    background: linear-gradient(135deg, #6B4423, #A0522D);
+}
+
+/* Sombra para tarjetas */
+.card-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono de características */
+.feature-icon {
+    background: linear-gradient(135deg, #D2691E, #A0522D);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(210, 105, 30, 0.3);
+}
+
+/* Efecto de subrayado en links de navegación */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #FCD34D;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Scroll suave */
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+/* Patrón de fondo para hero */
+.hero-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Utilidades para estados de producto */
+.hidden {
+    display: none !important;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.glow-effect {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* Mejoras para el badge premium */
+.badge-premium {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Estados de productos */
+.estado-disponible {
+    background-color: #DCFCE7;
+    color: #166534;
+}
+
+.estado-agotado {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* Mejoras responsive */
+@media (max-width: 768px) {
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .hero-pattern {
+        background-size: 30px 30px;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* Efectos de carga para productos */
+.producto-cargando {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Mejoras para el contador */
+.contador-productos {
+    background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+    border: 2px solid #F59E0B;
+    color: #92400E;
+}
+
+/* Estilos para el formulario de contacto */
+.formulario-exito {
+    background: linear-gradient(135deg, #DCFCE7, #BBF7D0);
+    border: 2px solid #22C55E;
+    color: #166534;
+}
+
+/* Efectos de transición para filtros */
+.transicion-filtros {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Mejoras para las tarjetas de producto */
+.tarjeta-producto {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #FDE68A;
+}
+
+.tarjeta-producto:hover {
+    border-color: #F59E0B;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Estilos para precios en COP */
+.precio-cop {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    color: #92400E;
+}
+
+/* Mejoras para botones de acción */
+.boton-accion {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(0);
+}
+
+.boton-accion:hover {
+    transform: translateY(-2px);
+}
+
+.boton-accion:active {
+    transform: translateY(0);
+}
