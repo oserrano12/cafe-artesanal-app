@@ -74,7 +74,7 @@ class GestorCatalogo {
 
     // Método para filtrar productos (usa un condicional)
     filtrarProductos(nombre, categoria) {
-        return this.productos.filter(producto => {
+        return this.productosOriginales.filter(producto => {
             const coincideNombre = producto.nombre.toLowerCase().includes(nombre.toLowerCase());
             // CONDICIONAL if para filtrar
             if (categoria === 'todos') {
@@ -83,6 +83,12 @@ class GestorCatalogo {
                 return coincideNombre && producto.categoria === categoria;
             }
         });
+    }
+
+    // Método para aplicar filtros (NUEVO MÉTODO CORREGIDO)
+    aplicarFiltros(nombre, categoria) {
+        this.productos = this.filtrarProductos(nombre, categoria);
+        this.mostrarProductos('contenedorProductos');
     }
 
     // Método para eliminar o cambiar estado de un producto
@@ -116,9 +122,10 @@ class GestorCatalogo {
         }
     }
 
-    // Método para restaurar productos originales
+    // Método para restaurar productos originales (CORREGIDO)
     restaurarProductosOriginales() {
         this.productos = [...this.productosOriginales];
+        this.mostrarProductos('contenedorProductos');
     }
 }
 
@@ -132,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Producto('Café Supremo', 'Café premium de exportación calidad suprema', 'premium', 45000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'disponible'),
         new Producto('Café Orgánico', 'Cultivo 100% natural sin pesticidas', 'organico', 38000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'disponible'),
         new Producto('Café Especial', 'Edición limitada tostado medio artesanal', 'especial', 52000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'agotado'),
-        new Producto('Café Tradicional', 'Sabor clásico santandereano de siempre', 'tradicional', 28000, 'https://images.unsplash.com-1587734195503-904fca47e0e9?w=400', 'disponible'),
+        new Producto('Café Tradicional', 'Sabor clásico santandereano de siempre', 'tradicional', 28000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'disponible'),
         new Producto('Café Excelso', 'Granos seleccionados premium exportación', 'premium', 42000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'disponible'),
         new Producto('Café Descafeinado', 'Todo el sabor sin cafeína natural', 'especial', 48000, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400', 'agotado')
     ];
@@ -152,31 +159,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtroCategoria = document.getElementById('filtroCategoria');
     const btnLimpiar = document.getElementById('btnLimpiar');
 
-    // Función para aplicar filtro en tiempo real
+    // Función para aplicar filtro en tiempo real (CORREGIDA)
     function aplicarFiltro() {
         const nombre = buscarInput.value;
         const categoria = filtroCategoria.value;
-        const productosFiltrados = gestor.filtrarProductos(nombre, categoria);
-        
-        // Crear array temporal para mostrar resultados filtrados
-        const productosTemporales = productosFiltrados.length > 0 
-            ? productosFiltrados 
-            : [];
-        
-        gestor.productos = productosTemporales;
-        gestor.mostrarProductos('contenedorProductos');
+        gestor.aplicarFiltros(nombre, categoria);
     }
 
     // Event listeners para filtrado en tiempo real
     buscarInput.addEventListener('input', aplicarFiltro);
     filtroCategoria.addEventListener('change', aplicarFiltro);
 
-    // Event listener para el botón de limpiar
+    // Event listener para el botón de limpiar (CORREGIDO)
     btnLimpiar.addEventListener('click', () => {
         buscarInput.value = '';
         filtroCategoria.value = 'todos';
         gestor.restaurarProductosOriginales();
-        gestor.mostrarProductos('contenedorProductos');
     });
 
     // Manejar formulario de contacto
@@ -208,4 +206,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.mostrarEstado = function() {
     console.log('Productos en catálogo:', window.gestor.productos);
     console.log('Total productos:', window.gestor.productos.length);
+    console.log('Productos originales:', window.gestor.productosOriginales);
 };
