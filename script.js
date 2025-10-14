@@ -1,5 +1,3 @@
-// script.js - Manejo del catálogo interactivo con POO - CORREGIDO
-
 // Clase Producto: Representa un producto con sus propiedades
 class Producto {
     constructor(nombre, descripcion, categoria, precio, imagen, estado) {
@@ -16,7 +14,7 @@ class Producto {
 class GestorCatalogo {
     constructor() {
         this.productos = [];
-        this.productosOriginales = []; // Copia de respaldo para restaurar
+        this.productosOriginales = [];
     }
 
     // Método para agregar productos al array
@@ -85,7 +83,7 @@ class GestorCatalogo {
         });
     }
 
-    // Método para aplicar filtros (NUEVO MÉTODO CORREGIDO)
+    // Método para aplicar filtros
     aplicarFiltros(nombre, categoria) {
         this.productos = this.filtrarProductos(nombre, categoria);
         this.mostrarProductos('contenedorProductos');
@@ -122,7 +120,7 @@ class GestorCatalogo {
         }
     }
 
-    // Método para restaurar productos originales (CORREGIDO)
+    // Método para restaurar productos originales
     restaurarProductosOriginales() {
         this.productos = [...this.productosOriginales];
         this.mostrarProductos('contenedorProductos');
